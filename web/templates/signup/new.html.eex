@@ -1,0 +1,8 @@
+<h1>Anmälan 2015</h1>
+
+<form method="post" action="/signup">
+  <input type="hidden" name="_csrf_token" value="<%= csrf_token(@conn) %>">
+  <input type="text" name="signup[team_name]" />
+  <input type="submit" />
+</form>
+
