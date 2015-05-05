@@ -1,5 +1,7 @@
 defmodule Gamlastansmetet.SignupController do
   use Gamlastansmetet.Web, :controller
+  alias Gamlastansmetet.Repo
+  alias Gamlastansmetet.Signup
   alias Plug.Conn.Status
 
   plug :action
@@ -9,9 +11,11 @@ defmodule Gamlastansmetet.SignupController do
   end
 
   def create(conn, params) do
-    IO.inspect params
+    signup = Signup.changeset(%Signup{}, params["signup"])
+    |> Repo.insert
+
     conn
     |> put_status(Status.code(:created))
-    |> render "show.html"
+    |> render "show.html", signup: signup
   end
 end

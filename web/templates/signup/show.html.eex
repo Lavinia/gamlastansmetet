@@ -1,1 +1,1 @@
-
+<h2>Tack för att du anmält <%= @signup.team_name %></h2>

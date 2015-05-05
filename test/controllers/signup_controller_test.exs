@@ -1,5 +1,6 @@
 defmodule Gamlastansmetet.SignupControllerTest do
   use Gamlastansmetet.ConnCase
+  alias Gamlastansmetet.Signup
 
   test "GET /signup/new" do
     conn = get conn(), "/signup/new"
@@ -8,8 +9,10 @@ defmodule Gamlastansmetet.SignupControllerTest do
   end
 
   test "POST /signup" do
-    conn = post conn(), "/signup", %{ team_name: "Storfiskarna" }
+    signup_count = Signup.count
+    conn = post conn(), "/signup", %{ "signup" => %{ "team_name" => "Kämpetorskarna" } }
     assert conn.status == Plug.Conn.Status.code :created
-    assert conn.resp_body =~ "Tack för att du anmält Storfiskarna"
+    assert conn.resp_body =~ "Tack för att du anmält Kämpetorskarna"
+    assert Signup.count == signup_count + 1
   end
 end

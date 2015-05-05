@@ -13,15 +13,10 @@ defmodule Gamlastansmetet.Router do
   end
 
   scope "/", Gamlastansmetet do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :index
     get "/signup/new", SignupController, :new
     post "/signup", SignupController, :create
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Gamlastansmetet do
-  #   pipe_through :api
-  # end
 end
