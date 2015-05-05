@@ -23,6 +23,7 @@ defmodule Gamlastansmetet.Signup do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:team_name, min: 1)
+    |> validate_presence_of_phone_or_email
   end
 
   @doc """
@@ -33,4 +34,14 @@ defmodule Gamlastansmetet.Signup do
       select: count(s.id)
     Repo.one query
   end
+
+  defp validate_presence_of_phone_or_email(changeset = %{valid?: false}), do: changeset
+  defp validate_presence_of_phone_or_email(changeset) do
+    valid = phone_or_email_present? changeset.changes
+    %{changeset | :valid? => valid }
+  end
+
+  defp phone_or_email_present?(%{phone: _phone}), do: true
+  defp phone_or_email_present?(%{email: _email}), do: true
+  defp phone_or_email_present?(_), do: false
 end

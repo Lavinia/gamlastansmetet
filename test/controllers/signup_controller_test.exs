@@ -10,7 +10,7 @@ defmodule Gamlastansmetet.SignupControllerTest do
 
   test "POST /signup" do
     signup_count = Signup.count
-    conn = post conn(), "/signup", %{ "signup" => %{ "team_name" => "Kämpetorskarna" } }
+    conn = post conn(), "/signup", %{ "signup" => %{ "team_name" => "Kämpetorskarna", "phone" => "123-456789", "email" => "kämpe@torskar.na" } }
     assert conn.status == Plug.Conn.Status.code :created
     assert conn.resp_body =~ "Tack för att du anmält Kämpetorskarna"
     assert Signup.count == signup_count + 1
