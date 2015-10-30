@@ -2,7 +2,7 @@
 
 <%= form_for @changeset, signup_path(@conn, :create), fn f -> %>
   <label>Lagnamn: <%= text_input f, :team_name %></label><br>
-  <label>Telefon: <%= text_input f, :phone %></label><br>
-  <label>Email: <%= text_input f, :email %></label><br>
+  <label>Telefon: <%= telephone_input f, :phone %></label><br>
+  <label>Email: <%= email_input f, :email %></label><br>
   <%= submit "Spara" %>
 <% end %>
