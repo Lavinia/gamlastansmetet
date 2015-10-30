@@ -22,5 +22,10 @@ defmodule Gamlastansmetet.SignupTest do
     changeset = Signup.changeset(%Signup{}, params)
     assert changeset.valid?
   end
-  #test "changeset is valid with team name and email"
+
+  test "changeset is valid with team name and email" do
+    params = %{"team_name" => "Torsksimmarna", "email" => "torskar@simmar.se"}
+    changeset = Signup.changeset(%Signup{}, params)
+    assert changeset.valid?
+  end
 end

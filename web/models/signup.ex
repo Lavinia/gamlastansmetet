@@ -38,7 +38,7 @@ defmodule Gamlastansmetet.Signup do
   defp validate_presence_of_phone_or_email(changeset = %{valid?: false}), do: changeset
   defp validate_presence_of_phone_or_email(changeset) do
     valid = phone_or_email_present? changeset.changes
-    %{changeset | :valid? => valid }
+    %{changeset | :valid? => valid}
   end
 
   defp phone_or_email_present?(%{phone: _phone}), do: true
