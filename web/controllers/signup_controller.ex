@@ -4,14 +4,12 @@ defmodule Gamlastansmetet.SignupController do
   alias Gamlastansmetet.Signup
   alias Plug.Conn.Status
 
-  plug :action
-
   def new(conn, _params) do
     render conn, "new.html"
   end
 
   def create(conn, params) do
-    signup = Signup.changeset(%Signup{}, params["signup"])
+    {:ok, signup} = Signup.changeset(%Signup{}, params["signup"])
     |> Repo.insert
 
     conn

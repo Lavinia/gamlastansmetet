@@ -12,6 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :gamlastansmetet, Gamlastansmetet.Repo,
   adapter: Ecto.Adapters.Postgres,
+  pool: Ecto.Adapters.SQL.Sandbox,
   database: "gamlastansmetet_test",
   size: 1,
   max_overflow: false

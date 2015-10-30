@@ -26,8 +26,7 @@ defmodule Gamlastansmetet.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_gamlastansmetet_key",
-    signing_salt: "Q4gZcGFn",
-    encryption_salt: "9Cr1HW6X"
+    signing_salt: "Q4gZcGFn"
 
-  plug :router, Gamlastansmetet.Router
+  plug Gamlastansmetet.Router
 end

@@ -4,7 +4,7 @@ defmodule Gamlastansmetet.Mixfile do
   def project do
     [app: :gamlastansmetet,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: "~> 1.1",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -29,13 +29,12 @@ defmodule Gamlastansmetet.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [
-      {:phoenix, "~> 0.11"},
-      {:phoenix_ecto, "~> 0.3"},
-      {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_reload, "~> 0.3"},
+      {:phoenix, "~> 1.0"},
+      {:phoenix_ecto, "~> 1.2"},
+      {:phoenix_html, "~> 2.2"},
+      {:phoenix_live_reload, "~> 1.0"},
       {:cowboy, "~> 1.0"},
-      {:phoenix_ecto, "~> 0.3"},
-      {:postgrex, "~> 0.8"},
+      {:postgrex, "~> 0.9"},
    ]
   end
 end
