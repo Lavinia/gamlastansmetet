@@ -21,6 +21,8 @@ defmodule Gamlastansmetet.SignupControllerTest do
     conn = post conn(), "/signup", %{ "signup" => %{ "phone" => "123-456789", "email" => "kämpe@torskar.na" } }
     assert conn.status == Plug.Conn.Status.code :ok
     assert conn.resp_body =~ "Anmälan 2015"
+    assert conn.resp_body =~ "123-456789"
+    assert conn.resp_body =~ "kämpe@torskar.na"
     assert Signup.count == signup_count
   end
 end

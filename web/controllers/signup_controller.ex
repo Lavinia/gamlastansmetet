@@ -5,21 +5,23 @@ defmodule Gamlastansmetet.SignupController do
   alias Plug.Conn.Status
 
   def new(conn, _params) do
-    render conn, "new.html"
+    render conn, "new.html", changeset: Signup.changeset(%Signup{})
   end
 
   def create(conn, params) do
-    changeset = Signup.changeset(%Signup{}, params["signup"])
+    Signup.changeset(%Signup{}, params["signup"])
+    |> Repo.insert
+    |> respond_to_signup(conn)
+  end
 
-    {status, signup_or_changeset} = changeset |> Repo.insert
-    if status == :ok do
-      conn
-      |> put_status(Status.code(:created))
-      |> render "show.html", signup: signup_or_changeset
-    else
-      conn
-      |> put_status(Status.code(:ok))
-      |> render "new.html"
-    end
+  defp respond_to_signup({:ok, signup}, conn) do
+    conn
+    |> put_status(Status.code(:created))
+    |> render "show.html", signup: signup
+  end
+  defp respond_to_signup({:error, changeset}, conn) do
+    conn
+    |> put_status(Status.code(:ok))
+    |> render "new.html", changeset: changeset
   end
 end

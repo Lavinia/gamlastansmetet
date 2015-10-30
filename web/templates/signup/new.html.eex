@@ -1,8 +1,8 @@
 <h1>Anmälan 2015</h1>
 
-<form method="post" action="/signup">
-  <input type="hidden" name="_csrf_token" value="<%= csrf_token %>">
-  <input type="text" name="signup[team_name]" />
-  <input type="submit" />
-</form>
-
+<%= form_for @changeset, signup_path(@conn, :create), fn f -> %>
+  <label>Lagnamn: <%= text_input f, :team_name %></label><br>
+  <label>Telefon: <%= text_input f, :phone %></label><br>
+  <label>Email: <%= text_input f, :email %></label><br>
+  <%= submit "Spara" %>
+<% end %>
