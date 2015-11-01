@@ -1,5 +1,9 @@
 <h1>Anmälan 2015</h1>
 
+<%= for error <- @changeset.errors do %>
+  <p><%= inspect error %></p>
+<% end %>
+
 <%= form_for @changeset, signup_path(@conn, :create), fn f -> %>
   <label>Lagnamn: <%= text_input f, :team_name %></label><br>
   <label>Telefon: <%= telephone_input f, :phone %></label><br>

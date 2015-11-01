@@ -14,6 +14,13 @@ defmodule Gamlastansmetet.SignupTest do
 
   test "changeset is not valid without a phone or email" do
     params = %{"team_name" => "Kämpetorskarna"}
+    changeset = changeset_for(params)
+    refute changeset.valid?
+    assert changeset.errors == [{:phone, "can't be empty"}, {:email, "can't be empty"}]
+  end
+
+  test "changeset is not valid when phone and email are empty" do
+    params = %{"team_name" => "Kämpetorskarna", "phone" => "", "email" => ""}
     refute changeset_for(params).valid?
   end
 
@@ -24,6 +31,11 @@ defmodule Gamlastansmetet.SignupTest do
 
   test "changeset is valid with team name and email" do
     params = %{"team_name" => "Torsksimmarna", "email" => "torskar@simmar.se"}
+    assert changeset_for(params).valid?
+  end
+
+  test "changeset is valid with team name and email and empty phone" do
+    params = %{"team_name" => "Torsksimmarna", "phone" => "", "email" => "torskar@simmar.se"}
     assert changeset_for(params).valid?
   end
 
