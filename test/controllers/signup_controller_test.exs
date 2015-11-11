@@ -23,6 +23,7 @@ defmodule Gamlastansmetet.SignupControllerTest do
     assert conn.resp_body =~ "Anmälan 2015"
     assert conn.resp_body =~ "123-456789"
     assert conn.resp_body =~ "kämpe@torskar.na"
+
     assert Signup.count == signup_count
   end
 end

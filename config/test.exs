@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :gamlastansmetet, Gamlastansmetet.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
@@ -16,3 +16,8 @@ config :gamlastansmetet, Gamlastansmetet.Repo,
   database: "gamlastansmetet_test",
   size: 1,
   max_overflow: false
+
+# Configure Hound
+config :hound,
+  driver: "selenium",
+  port: 4444

@@ -16,8 +16,17 @@ defmodule Gamlastansmetet.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {Gamlastansmetet, []},
-     applications: [:phoenix, :cowboy, :logger, :ecto]]
+    [
+      mod: {Gamlastansmetet, []},
+      applications: applications_for(Mix.env)
+    ]
+  end
+
+  defp applications_for(:test), do: [:hound | default_applications]
+  defp applications_for(_), do: default_applications
+
+  defp default_applications do
+    [:phoenix, :cowboy, :logger, :ecto]
   end
 
   # Specifies which paths to compile per environment
@@ -35,6 +44,7 @@ defmodule Gamlastansmetet.Mixfile do
       {:phoenix_live_reload, "~> 1.0"},
       {:cowboy, "~> 1.0"},
       {:postgrex, "~> 0.9"},
+      {:hound, "~> 0.7.5"}
    ]
   end
 end

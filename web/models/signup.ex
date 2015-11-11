@@ -46,7 +46,7 @@ defmodule Gamlastansmetet.Signup do
   defp update_changeset(false, changeset) do
     %{changeset |
       :valid? => false,
-      :errors => [{:phone, "can't be empty"}, {:email, "can't be empty"} | changeset.errors]
+      :errors => [phone: "either phone or email must be filled in", email: "either phone or email must be filled in"]
     }
   end
 
