@@ -6,7 +6,7 @@ defmodule Gamlastansmetet.Mixfile do
      version: "0.0.1",
      elixir: "~> 1.1",
      elixirc_paths: elixirc_paths(Mix.env),
-     compilers: [:phoenix] ++ Mix.compilers,
+     compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -26,7 +26,7 @@ defmodule Gamlastansmetet.Mixfile do
   defp applications_for(_), do: default_applications
 
   defp default_applications do
-    [:phoenix, :cowboy, :logger, :ecto]
+    [:gettext, :phoenix, :cowboy, :logger, :ecto]
   end
 
   # Specifies which paths to compile per environment
@@ -44,7 +44,8 @@ defmodule Gamlastansmetet.Mixfile do
       {:phoenix_live_reload, "~> 1.0"},
       {:cowboy, "~> 1.0"},
       {:postgrex, "~> 0.9"},
-      {:hound, "~> 0.7.5"}
+      {:hound, "~> 0.7.5"},
+      {:gettext, "~> 0.9"}
    ]
   end
 end

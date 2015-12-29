@@ -19,6 +19,8 @@ defmodule SignupFeatureTest do
     actual = visible_text({:id, "phone_error_message"})
     expected_error_message = "antingen telefon eller email måste fyllas i"
 
+    # TODO: Add Gettext http://hexdocs.pm/gettext/0.9.0/Gettext.html
+
     assert actual == expected_error_message
   end
 end

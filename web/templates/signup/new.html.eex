@@ -4,6 +4,7 @@
   <p><%= inspect error %></p>
 <% end %>
 
+<%= gettext "TESTING" %>
 <%= form_for @changeset, signup_path(@conn, :create), fn f -> %>
   <div>
     <label>Lagnamn: <%= text_input f, :team_name %></label>
@@ -12,7 +13,7 @@
     <label>Telefon: <%= telephone_input f, :phone %></label>
     <%= if Keyword.has_key? @changeset.errors, :phone do %>
       <span id="phone_error_message">
-        <%= @changeset.errors[:phone] %>
+        <%= translate @changeset.errors[:phone] %>
       </span>
     <% end %>
   </div>
