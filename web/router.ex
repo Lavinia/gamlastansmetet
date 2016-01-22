@@ -1,5 +1,5 @@
 defmodule Gamlastansmetet.Router do
-  use Phoenix.Router
+  use Gamlastansmetet.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]

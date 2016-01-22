@@ -17,7 +17,8 @@ config :gamlastansmetet, Gamlastansmetet.Endpoint,
 config :gamlastansmetet, Gamlastansmetet.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/gettext/.*(po)$},
       ~r{web/views/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]
@@ -26,7 +27,13 @@ config :gamlastansmetet, Gamlastansmetet.Endpoint,
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
+# Set a higher stacktrace during development.
+# Do not configure such in production as keeping
+# and calculating stacktraces is usually expensive.
+config :phoenix, :stacktrace_depth, 20
+
 # Configure your database
 config :gamlastansmetet, Gamlastansmetet.Repo,
   adapter: Ecto.Adapters.Postgres,
-  database: "gamlastansmetet_dev"
+  database: "gamlastansmetet_dev",
+  pool_size: 10

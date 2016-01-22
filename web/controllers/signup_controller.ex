@@ -17,11 +17,11 @@ defmodule Gamlastansmetet.SignupController do
   defp respond_to_signup({:ok, signup}, conn) do
     conn
     |> put_status(Status.code(:created))
-    |> render "show.html", signup: signup
+    |> render("show.html", signup: signup)
   end
   defp respond_to_signup({:error, changeset}, conn) do
     conn
     |> put_status(Status.code(:ok))
-    |> render "new.html", changeset: changeset
+    |> render("new.html", changeset: changeset)
   end
 end
